@@ -14,21 +14,35 @@ spec:
         app: stress
     spec:
       containers:
-      - name: worker
-        image: polinux/stress:1.0.4
-        args:
-          - --cpu
-          - "1"
-          - --vm
-          - "1"
-          - --vm-bytes
-          - "150M"
-          - --timeout 
-          - "0"
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "50Mi"
-          limits:
-            cpu: "200m"
-            memory: "200Mi"
+        - name: burner
+          image: busybox:1.36
+          command: ["sh" , "-c", "yes > /dev/null"]
+          resources:
+              requests:
+                cpu: "50m"
+                memory: "32Mi"
+              limits:
+                cpu: "500m"
+                memory: "128Mi"
+
+
+
+      # containers:
+      # - name: worker
+      #   image: polinux/stress:1.0.4
+      #   args:
+      #     - --cpu
+      #     - "1"
+      #     - --vm
+      #     - "1"
+      #     - --vm-bytes
+      #     - "150M"
+      #     - --timeout 
+      #     - "0"
+      #   resources:
+      #     requests:
+      #       cpu: "50m"
+      #       memory: "50Mi"
+      #     limits:
+      #       cpu: "200m"
+      #       memory: "200Mi"
