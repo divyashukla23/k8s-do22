@@ -1,6 +1,3 @@
-
-
-
 You are tasked with deploying and managing a simple web application on Kubernetes using Minikube.
 This exercise will help you understand Kubernetes Objects like Services, StatefulSets, and Horizontal Pod Autoscalers (HPA).
 Tasks
@@ -23,7 +20,7 @@ Maximum: 5 replicas
 Target CPU utilization: 50%
 Generate load using a BusyBox Pod:
 
-  kubectl run -it loadgen --rm --image=busybox:1.28 --restart=Never -- \   /bin/sh -c "while true; do wget -q -O- http://php-apache; done"
+  kubectl run -it loadgen --rm --image=busybox:1.28 --restart=Never -- \  /bin/sh -c "while true; do wget -q -O- http://php-apache; done"
 Observe how the HPA automatically scales the replicas up.
 Deliverables
 YAML manifests for:
