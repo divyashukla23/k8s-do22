@@ -9,3 +9,5 @@ spec:
     - name: curl
       image: curlimages/curl
       command: ["sleep", "3600"]
+
+      # use nginx n get exec inside it to curl backend 

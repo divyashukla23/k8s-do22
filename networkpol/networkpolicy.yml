@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-frontend-to-backend
+  name: backend-allow-frontend 
+  namespace: netpol-demo
 spec:
   podSelector:
     matchLabels:

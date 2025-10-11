@@ -2,11 +2,18 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: backend
+  namespace: netpol-demo
   labels:
     app: backend
 spec:
   containers:
-    - name: backend
-      image: nginx
+    - name: http
+      image: hashicorp/http-echo
+      args:
+        - "-text=Hello from backend"
       ports:
-        - containerPort: 80
+        - containerPort: 5678
+
+
+# kubectl get pod backend -n netpol-demo -o wide
+# kubectl exec -it frontend -n netpol-demo -- curl 10.244.0.17:5678 
