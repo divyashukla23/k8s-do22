@@ -1,16 +1,13 @@
-# https://k8s.io/examples/application/php-apache.yaml
-# kubectl autoscale deployment php-apache --cpu=50% --min=1 --max=10
-# generate load : kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- \
-  # /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: php-apache
+  name: stress
+  namespace: hpa-demo
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: php-apache
+    name: stress
   minReplicas: 1
   maxReplicas: 10
   metrics:
